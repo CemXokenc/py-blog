@@ -29,6 +29,7 @@ class PostDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         if "form" not in kwargs:
             context["form"] = CommentaryForm()
+
         return context
 
     def post(self, request: HttpRequest, *args, **kwargs):
@@ -39,6 +40,7 @@ class PostDetailView(DetailView):
             form.add_error(
                 None, "Only authenticated users can leave a commentary"
             )
+
             return self.render_to_response(self.get_context_data(form=form))
 
         if form.is_valid():

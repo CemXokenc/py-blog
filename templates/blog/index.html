@@ -17,10 +17,11 @@
             <th scope="col">Title</th>
             <th scope="col">Content</th>
             <th scope="col">Created time</th>
+            <th scope="col">Commentaries</th>
           </tr>
           </thead>
           <tbody>
-          {% for post in post_list  %}
+          {% for post in post_list %}
             <tr>
               <td class="ps-3 fw-semibold">
                 <i class="bi bi-person me-1 text-secondary"></i>{{ post.owner }}
@@ -33,6 +34,9 @@
               <td class="text-muted">{{ post.content|truncatewords:20 }}</td>
               <td class="text-nowrap text-secondary">
                 <i class="bi bi-calendar3 me-1"></i>{{ post.created_time|date:"d.m.Y H:i" }}
+              </td>
+              <td class="text-nowrap text-center">
+                <i class="bi bi-chat-dots me-1"></i>{{ post.commentary.count }}
               </td>
             </tr>
           {% empty %}
